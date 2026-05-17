@@ -10,12 +10,7 @@
       overflow: hidden;
     }
 
-    #contain_moon {
-      text-align: center;
-      background: transparent !important;
-      width: 100%;
-    }
-
+    #contain_moon,
     #contain_moon div {
       background: transparent !important;
     }
@@ -30,10 +25,10 @@
 
 <body>
   <div id="contain_moon">
-    <div style="font-weight:bold"></div>
+    <div></div>
     <div style="padding:30px; filter:drop-shadow(0 0 30px hsl(272,100%,26%))"></div>
     <div></div>
-    <div style="font-size:small"></div>
+    <div></div>
   </div>
 
   <script>
@@ -61,8 +56,20 @@
           m[1].innerHTML = b.phase[d].svg;
 
           var svg = m[1].querySelector("svg");
+
           if (svg) {
             svg.style.background = "transparent";
+            svg.setAttribute("style", "background: transparent; display:block; margin:0 auto;");
+
+            svg.querySelectorAll("rect").forEach(function(rect){
+              rect.setAttribute("fill", "transparent");
+              rect.style.fill = "transparent";
+            });
+
+            svg.querySelectorAll("[fill='white'], [fill='#fff'], [fill='#ffffff'], [fill='rgb(255,255,255)']").forEach(function(el){
+              el.setAttribute("fill", "transparent");
+              el.style.fill = "transparent";
+            });
           }
         }
       };
