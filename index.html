@@ -2,12 +2,19 @@
 <html>
 <head>
   <meta charset="UTF-8" />
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background: transparent !important;
       overflow: hidden;
+      background: white;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html, body {
+        background: black;
+      }
     }
 
     #contain_moon,
@@ -54,23 +61,6 @@
         if(a.readyState == 4 && a.status == 200){
           var b = JSON.parse(a.responseText);
           m[1].innerHTML = b.phase[d].svg;
-
-          var svg = m[1].querySelector("svg");
-
-          if (svg) {
-            svg.style.background = "transparent";
-            svg.setAttribute("style", "background: transparent; display:block; margin:0 auto;");
-
-            svg.querySelectorAll("rect").forEach(function(rect){
-              rect.setAttribute("fill", "transparent");
-              rect.style.fill = "transparent";
-            });
-
-            svg.querySelectorAll("[fill='white'], [fill='#fff'], [fill='#ffffff'], [fill='rgb(255,255,255)']").forEach(function(el){
-              el.setAttribute("fill", "transparent");
-              el.style.fill = "transparent";
-            });
-          }
         }
       };
 
